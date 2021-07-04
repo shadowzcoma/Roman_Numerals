@@ -6,12 +6,15 @@ exitCond = 0
 
 while (exitCond == 0):
     print('')
-    numArabic = int(input("Please enter a number [0-quit]: "));
+    numArabic = input("Please enter a number : ")
     #os.system('cls')
     
-    if (numArabic == 0):
+    if (numArabic.isnumeric() == 0):
         exitCond = 1
-    
+        numArabic = 0
+    else:
+        numArabic = int(numArabic)
+        
     C_10 = ['I', 'X', 'C', 'M', 'x', 'c']
     C_5 = ['V', 'L', 'D', 'v', 'l', 'd']
 
@@ -23,19 +26,13 @@ while (exitCond == 0):
             #print('Temp Arabic : ', tmpArabic);
             tmpVal = math.floor(tmpArabic / 10**k);
             tmpRoman = '';
-            
-            if tmpVal in [1,2,3]:
-                tmpRoman = C_10[k]*tmpVal
+
+            if tmpVal in [1,2,3,5,6,7,8]:
+                tmpRoman = C_5[k]*(tmpVal>=5) + C_10[k]*(tmpVal-(5*(tmpVal>=5)))
                 
             if tmpVal in [4]:
                 tmpRoman = C_10[k] + C_5[k]
             
-            if tmpVal in [5]:
-                tmpRoman = C_5[k]
-            
-            if tmpVal in [6,7,8]:
-                tmpRoman = C_5[k] + C_10[k]*(tmpVal-5)
-                
             if tmpVal in [9]:
                 tmpRoman = C_10[k] + C_10[k+1]
 
