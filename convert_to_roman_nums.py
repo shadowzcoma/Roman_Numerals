@@ -21,7 +21,10 @@ while (exitCond == 0):
     txtRoman = ' '
     tmpArabic = numArabic
 
-    if numArabic < 10**len(C_10):
+    if (exitCond == 1):
+        print('No input ---> exiting')
+
+    elif numArabic < 10**len(C_10):
         for k in range(len(C_10), -1 , -1):
             #print('Temp Arabic : ', tmpArabic);
             tmpVal = math.floor(tmpArabic / 10**k);
